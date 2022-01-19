@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ludo</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  
+  body{background-color: #2a2a72;
+background-image: linear-gradient(315deg, #6161c2 0%, #009ffd 74%);
+
+
+font-family: 'Source Sans Pro', sans-serif;
+
+
+}
+
+.bgg{background:transparent !important;}
+
+
+  .ludoTable{text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+    color: #fff;
+	height: 575px;
+    background:#013e6d;
+ 
+    text-align: center;
+    padding: 0 0 30px;border-radius:20px;
+    position: relative;
+}
+.ludoTable .ludoTable-header{
+    background: #20bf37;
+
+    padding: 15px 0 16px;
+    margin: 0 0 20px;
+    position: relative;    border-radius: 20px;
+}
+.ludoTable .ludoTable-header:before{
+    content: "";
+    background:linear-gradient(to top right,#20bf37 49%, transparent 50%);
+    width: 25px;
+    height: 25px;
+    box-shadow: -6px 6px #a9efb3;
+    transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+    position: absolute;
+    bottom: -21px;
+    left: 50%;
+    z-index: 1;
+}
+.ludoTable .title{
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 35px;
+    text-transform: uppercase;
+    margin: 0;
+}
+.ludoTable .price-value{
+    color: #20bf37;
+    padding: 15px 0;
+    margin: 0 0 10px;
+}
+.ludoTable .price-value .amount{
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 38px;
+    display: inline-block;
+}
+.ludoTable .price-value .duration{
+    color: #bbb;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 20px;
+    display: inline-block;
+}
+.ludoTable .ludo-content{
+    padding: 0  7px;
+    margin: 0 0 30px;
+    list-style: none;
+}
+.ludoTable .ludo-content li{
+    color: #111;
+    background:#7ccd0c;
+    font-size: 17px;
+	height:60px;
+    font-weight: 500;
+   border-radius:10px;
+    text-align:center;
+    text-transform: capitalize;
+    padding: 5px 40px 5px 20px;
+    position: relative;
+}
+.ludoTable .ludo-content  li:nth-child(even){ background: #7ccd0c; }
+
+.ludoTable .ludo-content li.disable:before{
+    content: "\f00d";
+    color: #b2b2b2;
+}
+
+
+@media only screen and (max-width: 990px){
+    .ludoTable{ margin: 0 0 40px; }
+}
+
+.mtp{margin-top:70px;}
+
+.first{background:#fb7c0b!important;border:4px solid #f67b14;}
+
+.second{background:#7ccd0c !important;border: 4px solid #a4e941;}
+.third{background:#5e23bb !important;    border: 4px solid #7e48f6;}
+.ent1{color:#fff; font-weight:700; text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+}
+.ent2{color:#fff;white-space:nowrap; font-weight:700; text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+}
+.box{width:70px;height:21px;background:#223a00;color:#fff;border-radius:5px;font-size: 15px;}
+
+.box2{width:30px;height:30px;border-radius:50%; background: #223a00;color:#fff;margin-top:10px;padding:4px 0;}
+.user{position: relative;
+    top: -27px;
+    left: 30px;
+}
+
+
+.join{background: #95d828;
+    color: #fff !important;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+             0px 8px 13px rgba(0,0,0,0.1),
+             0px 18px 23px rgba(0,0,0,0.1);
+font-weight:800;
+    border: none;
+    position: relative;
+	font-size:18px;
+    width: 72px;height:27px;
+    border-radius: 10px;
+    top: -10px;box-shadow: 0 2px 2px rgb(0 0 0 / 10%), 0 4px 4px rgb(0 0 0 / 10%), 0 6px 6px rgb(0 0 0 / 10%), 0 8px 8px rgb(0 0 0 / 10%);
+}
+
+.mt{margin-top:12px;}
+
+.btn1{display:none;}
+.btn2{display:none;}
+.btn3{display:none;}
+
+@media only screen and (max-width:600px) {
+  #live{
+    display:none;
+  }
+  
+  .ent1{    position: absolute;
+    left: 9px;
+}
+
+.box2 {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #223a00;
+    color: #fff;
+    margin-top: 10px;
+    margin-left: 113px;}
+	
+	.ent2 {top:5px;
+    color: #fff;
+    position: absolute;
+    left: 242px;}
+  
+  #timer{display:none;}
+  
+  .btn1{display:inline-block;}
+.btn2{display:inline-block;}
+.btn3{display:inline-block;}
+  .mtp {
+    margin-top:10px;
+}
+  
+.btn1 {
+    background-color: #5f310d;
+    width: 108px;
+    color: #fff;
+	margin-left:28px;
+    font-size: 12px;
+    text-transform: uppercase;
+    height:49px;
+    border: 5px solid #5f2e06;
+    border-radius: 14px;}
+	
+.btn2 {
+    background-color:#8ac825;
+    width: 108px;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    height:49px;
+    border: 5px solid #8ef40d;
+    border-radius: 14px;}	
+.btn3 {
+    background-color:#261149;
+    width: 108px;
+    color: #fff;
+    font-size: 12px;
+    text-transform: uppercase;
+    height:49px;
+    border: 5px solid #2f1c5c;
+    border-radius: 14px;}
+	
+  .main-btn{display:flex; grid-gap:5px;   position: relative;
+    top: -33px;
+}
+  
+}
+
+
+
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 980px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+  
+  .first{height: 71px;}
+  .second{height: 71px;}
+  .third{height: 71px;}
+  
+  .ludoTable .title {
+    font-size: 21px;
+    font-weight: 800;}
+  
+  .mtp{margin-top:10px;display:flex;}
+  
+  .ent1 {
+    color: #fff;
+    position: absolute;
+    position: absolute;
+    left: -1px;}
+	
+	.ludoTable{width:240px;height:592px;}
+	
+	.box2{margin-left:60px;width:25px;height:25px;}
+	
+	.ent2 {
+    color: #fff;
+    white-space: nowrap;
+    position: absolute;
+    left: 131px;top:5px;}
+	
+	.ludoTable .ludo-content li {
+    color: #111;
+    background: #7ccd0c;
+    font-size: 13px;}
+	
+	.user {
+    position: relative;
+    top: -20px;
+    width: 15px;
+    left: 22px;
+}
+
+.join{font-size:16px;}
+  
+
+}
+  </style>
+</head>
+
+<body>
+
+
+
+<div class="demo">
+    <div class="container">
+        <div class="row mtp">
+            <div class="col-lg-4 col-md-4 col-sm-4 " id="live">
+                <div class="ludoTable">
+                    <div class="ludoTable-header first">
+                        <h3 class="title">Live challenges</h3>
+                    </div>
+                 
+                    <ul class="ludo-content">
+                <li><div class="col-md-4 ent1">Entry <div class="box">5</div></div> <div class="col-md-4"><div class="box2">1H<img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">10</div></div></li> <button class="join">Accept</button>
+  <li class="mt"><div class="col-md-4 ent1">Entry <div class="box">7</div></div> <div class="col-md-4"><div class="box2">1H <img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">13</div></div></li><button class="join">Accept</button>
+                    </ul>
+                 
+                </div>
+            </div>
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4 " id="classic">
+                <div class="ludoTable">
+                    <div class="ludoTable-header second">
+                        <h3 class="title">Classic</h3>
+                    </div>
+                
+                    <ul class="ludo-content">
+ <li><div class="col-md-4 ent1">Entry <div class="box">5</div></div> <div class="col-md-4"><div class="box2">1H<img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">10</div></div></li> <button class="join">Join</button>
+  <li class="mt"><div class="col-md-4 ent1">Entry <div class="box">7</div></div> <div class="col-md-4"><div class="box2">1H <img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">13</div></div></li><button class="join">Join</button>
+   <li class="mt"><div class="col-md-4 ent1">Entry  <div class="box">10</div></div> <div class="col-md-4"><div class="box2">1H <img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">14</div></div></li><button class="join">Join</button>
+    <li class="mt"><div class="col-md-4 ent1">Entry <div class="box">15</div></div> <div class="col-md-4"><div class="box2">1H <img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">59</div></div></li><button class="join">Join</button>
+	 <li class="mt"><div class="col-md-4 ent1">Entry <div class="box">20</div></div> <div class="col-md-4"><div class="box2">1H <img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">70</div></div></li><button class="join">Join</button>
+ 
+                    </ul>
+                  
+                </div>
+            </div>
+			
+			            <div class="col-lg-4 col-md-4 col-sm-4 " id="timer">
+                <div class="ludoTable">
+                    <div class="ludoTable-header third">
+                        <h3 class="title">Timer</h3>
+                    </div>
+                 
+                    <ul class="ludo-content">
+                    <li class="mt" style="background: #8149da;"><div class="col-md-4 ent1">Entry <div class="box">15</div></div> <div class="col-md-4"><div class="box2 bgg"><img src="images/clock.png" width="20"> <img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">29</div></div></li> <button class="join">Join</button>
+  <li class="mt" style="background: #8149da;"><div class="col-md-4 ent1">Entry <div class="box">22</div></div> <div class="col-md-4"><div class="box2 bgg"><img src="images/clock.png" width="20"> <img src="images/2p.png" class="user" width="20"> </div></div> <div class="col-md-4 ent2">Prize pool <div class="box">84</div></div></li><button class="join">Join</button>
+   <li class="mt" style="background: #8149da;"><div class="col-md-4 ent1">Entry  <div class="box">25</div></div> <div class="col-md-4"><div class="box2 bgg"><img src="images/clock.png" width="20"><img src="images/2p.png" class="user" width="20"></div></div> <div class="col-md-4 ent2">Prize pool <div class="box">48</div></div></li><button class="join">Join</button>
+   <li class="mt" style="background: #8149da;"><div class="col-md-4 ent1">Entry <div class="box">50</div></div> <div class="col-md-4"><div class="box2 bgg"><img src="images/clock.png" width="20"><img src="images/2p.png" class="user" width="20"></div></div> <div class="col-md-4 ent2">Prize pool <div class="box">95</div></div></li><button class="join">Join</button>
+                    </ul>
+                 
+                </div>
+            </div>
+
+<div class="main-btn">
+
+<button class="btn1">Live challenges </button>
+<button class="btn2">Classic</button>
+<button class="btn3">Timer</button>
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+  $(".btn1").click(function(){
+    $("#classic,#timer").hide();
+  
+
+    $("#live").show();
+  });
+});
+</script>
+
+
+<script>
+$(document).ready(function(){
+  $(".btn2").click(function(){
+    $("#live,#timer").hide();
+  
+
+    $("#classic").show();
+  });
+});
+</script>
+
+<script>
+$(document).ready(function(){
+  $(".btn3").click(function(){
+    $("#live,#classic").hide();
+  
+
+    $("#timer").show();
+  });
+});
+</script>
+
+
+</body>
+</html>
